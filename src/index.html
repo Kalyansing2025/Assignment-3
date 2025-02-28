@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Assignment-3</title>
+
+    <!-- Bootstrap cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Quill CSS -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+    <!-- Quill JS -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <!-- connected files  -->
+    <script src="./assets/styles/index.js"></script>
+    <link rel="stylesheet" href="./assets/styles/style.css">
+
+    <!-- font awesome CDN  -->
+    <script src="https://kit.fontawesome.com/YOUR_FA_KIT.js" crossorigin="anonymous"></script>
+
+    <!-- internal css  -->
+    <style>
+        /* Sidebar Styling */
+        .sidebar {
+            background: #fff;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            height: calc(100% - 70px);
+            overflow-y: auto;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(0);
+            /* Always show on larger screens */
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: #f0f0f0;
+        }
+
+        .main-content {
+            transition: margin-left 0.3s ease-in-out;
+            padding: 1 px;
+            margin-top: 0;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                /* Initially hidden on small screens */
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+                /* Show sidebar when active */
+            }
+
+            .main-content {
+                margin-left: 0;
+                /* Full width when sidebar is hidden */
+            }
+        }
+
+
+        /* Navbar */
+        .navbar {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Container -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Main Content -->
+            <div class="col-lg-12 midia">
+                <!-- Navbar -->
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom w-100 py-3 position-fixed top-0"
+                            style="z-index: 1000;">
+                            <div class="container-fluid">
+                                <!-- Logo -->
+                                <a class="navbar-brand d-flex align-items-center" href="#">
+                                    <img src="./assets/icons/TCC..jpg" alt="Logo" height="50" class="me-2">
+                                </a>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#navbarContent">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <!-- Create New Learning Path/ Country -->
+                                <div class="collapse navbar-collapse" id="navbarContent">
+                                    <div class="ms-3 d-none d-md-block ps-5">
+                                        <h5 class="mb-0">Skill Sets </h5>
+                                        <small class="text-muted">Learning Paths >Skill Sets </small>
+                                    </div>
+                                    <!-- Country and Language/ Profile/ icon -->
+                                    <ul class="navbar-nav ms-auto align-items-center">
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
+                                                data-bs-toggle="dropdown">
+                                                <img src="./assets/icons/flag.png" alt="" height="20" width="20"
+                                                    class="me-1"> Hindi (IND)
+                                            </a>
+                                            <!-- Country -->
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#"><img
+                                                            src="./assets/icons/british-columbia.jpg.pn g" height="20"
+                                                            width="20" class="me-1"> English
+                                                        (British-Columbia)</a></li>
+                                                <li><a class="dropdown-item" href="#"><img
+                                                            src="./assets/icons/australia.jpg.png" height="20"
+                                                            width="20" class="me-1"> Spanish (Australia)</a></li>
+                                                <li><a class="dropdown-item" href="#"><img
+                                                            src="./assets/icons/japan.jpg.png" height="20" width="20"
+                                                            class="me-1"> English (Japan)</a></li>
+                                                <li><a class="dropdown-item" href="#"><img
+                                                            src="./assets/icons/new-zealand.jpg.png" height="20"
+                                                            width="20" class="me-1"> Spanish (New-Zealand)</a></li>
+                                            </ul>
+                                        </li>
+                                        <!-- bell icon -->
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#"><i class="bi bi-bell"></i></a>
+                                        </li>
+                                        <!-- seting icon -->
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#"><i class="bi bi-gear"></i></a>
+                                        </li>
+                                        <!-- profile-1 -->
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
+                                                data-bs-toggle="dropdown">
+                                                <img src="./assets/icons/image.jpg" width="32" height="32"
+                                                    class="rounded-circle me-2" alt="Admin">
+                                                <span class="d-none d-md-inline">Ales Lee</span>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                                <li><a class="dropdown-item" href="#">Logout</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <!-- Sidebar and Web Content -->
+                <div class="row">
+                    <div class="col-12 col-md-2">
+                        <!-- Sidebar -->
+                        <div class="sidebar mt-4" id="sidebar" style="z-index: 1000;">
+                            <button class="btn btn-danger d-md-none m-2" id="closeSidebar">✖</button>
+                            <a href="#" class="sidebar-link"><i class="fas fa-th-large"></i> Dashboard</a>
+                            <a href="#" class="sidebar-link toggle-submenu"><i class="fas fa-users"></i> Team Members <i
+                                    class="fa fa-chevron-down ms-auto"></i></a>
+                            <div class="submenu">
+                                <a href="#"><i class="fas fa-user"></i> Team Member</a>
+                                <a href="#"><i class="fas fa-certificate"></i> Certification</a>
+                            </div>
+                            <a href="#" class="sidebar-link"><i class="fas fa-project-diagram"></i> Projects</a>
+                            <a href="#" class="sidebar-link"><i class="fas fa-user-tie"></i> Clients</a>
+                            <a href="#" class="sidebar-link toggle-submenu"><i class="fas fa-graduation-cap"></i>
+                                Learning Paths <i class="fa fa-chevron-down ms-auto"></i></a>
+                            <div class="submenu">
+                                <a href="#"><i class="fas fa-laptop-code"></i> Learning Path</a>
+                                <a href="#"><i class="fas fa-book"></i> Courses</a>
+                                <a href="#"><i class="fas fa-users"></i> Skill Sets</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-10 mt-5">
+                        <!-- Web Page Content -->
+                        <div class="main-content" style="margin-top: 60px;">
+                            <button class="btn btn-primary m-3 d-md-none" id="sidebarToggle">☰ </button>
+                            <div class="container-fluid mb-2 mt-5 border">
+                                <!-- Card Body -->
+                                <div class="main-content">
+                                    <div class="row align-items-center border-bottom p-3">
+                                        <div class="col-md-4 col-12">
+                                            <label class="form-label">Search Skills</label>
+                                            <input type="text" class="form-control" placeholder="Search">
+                                        </div>
+                                        <!-- Cancel and Save Button -->
+                                        <div
+                                            class="col-md-8 col-12  d-md-flex align-items-center justify-content-md-end justify-content-center mt-4">
+                                            <div class="btn-container d-flex gap-2 ">
+                                                <button class="btn btn-danger w-sm-100 w-md-auto">
+                                                    <i class="fa fa-trash me-2 "></i>DELETE</button>
+                                                <button class="btn btn-primary w-sm-100 w-md-auto"> <img
+                                                        src="./assets/images/note.png" height="20px" width="20px"
+                                                        alt=""> CREATE NEW SKILLS
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--  Container/ Rows -->
+                                    <div class="container mt-4">
+                                        <div
+                                            class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3  row-cols-xl-4 row-cols-xxl-4 g-2 g-lg-3">
+                                            <!-- CSS -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/CSS-Logo.png" alt="CSS" class="p-1 px-2">
+                                                    <span>CSS</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- JavaScript -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/java.png" class="p-1" alt="JavaScript"
+                                                        class="p-1 px-2">
+                                                    <span>JavaScript</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- C# -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/c_sharp.png" alt="C#" class="p-1 px-2">
+                                                    <span>C#</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- Python -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/python.png" alt="Python" class="p-1 px-2">
+                                                    <span>Python</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- HTML -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/html.png" alt="HTML" class="p-1 px-2">
+                                                    <span>HTML</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- Git -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/github.png" alt="Git" class="p-1 px-2">
+                                                    <span>Git</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- Asp.Net -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/dotnet.png" alt="Asp.Net"
+                                                        class="p-1 px-2">
+                                                    <span>ASP.NET</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- Java -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/java.png" alt="Java" class="p-1 px-2">
+                                                    <span>Java</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- Bootstrap -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/bootstrap.png" alt="Bootstrap"
+                                                        class="p-1 px-2">
+                                                    <span>Bootstrap</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- React JS -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/react.png" alt="React Js"
+                                                        class="p-1 px-2">
+                                                    <span>React JS</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- Typescript -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/typescript.png" alt="Typescript"
+                                                        class="p-1 px-2">
+                                                    <span>Typescript</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- Angular Js -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/angular.png" alt="Angular Js"
+                                                        class="p-1 px-2">
+                                                    <span>Angular JS</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- Node.JS -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/node.png" alt="Node.Js" class="p-1 px-2">
+                                                    <span>Node.JS</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- ML -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/machine_learning.png" alt="ML"
+                                                        class="p-1 px-2">
+                                                    <span>ML</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- AI -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/artificial.png " class="p-1" alt="AI"
+                                                        class="p-1 px-2">
+                                                    <span>AI </span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!--  Deep Learning -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/Deep-Learning.png" alt="Deep Learnong"
+                                                        class="p-1 px-2">
+                                                    <span> Deep Learning </span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- Data Analysis -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/data-analysis.png" alt="Data Analysis"
+                                                        class="p-1 px-2">
+                                                    <span>Data Analysis</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- SQL -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/sql.png" class="p-1" alt="SQL"
+                                                        class="p-1 px-2">
+                                                    <span>SQL</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- MySQL -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/mysql_.png" alt="MYSQL" class="p-1 px-2">
+                                                    <span>MySQL</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- DB Management -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/database-management.jpg"
+                                                        alt="DB Management" class="p-1 px-2">
+                                                    <span>DB Management</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- MongoDB -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/mongodb.png" alt="MongoDB"
+                                                        class="p-1 px-2">
+                                                    <span>MongoDB</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- SQL Server -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/sql-server.png" alt="SQL Server"
+                                                        class="p-1 px-2">
+                                                    <span>SQL Server</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- Apache Kafka -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/apache-kafka.jpg" alt="Apache Kafka"
+                                                        class="p-1 px-2">
+                                                    <span>Apache Kafka</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- PostgreSQL -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/postgresql.png" alt="PostgreSQL"
+                                                        class="p-1 px-2">
+                                                    <span>PostgreSQL</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- Oracle SQL -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/oracle_sql.png" alt="Oracle SQL"
+                                                        class="p-1 px-2">
+                                                    <span>Oracle SQL</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- Docker -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/Docker-Symbol.png" alt="Docker"
+                                                        class="p-1 px-2">
+                                                    <span>Docker</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- Kubenetes -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/kubernets.png" alt="Kubenetes"
+                                                        class="p-1 px-2">
+                                                    <span>Kubenetes</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- JIRA -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/jira.png" alt="JIRA" class="p-1 px-2">
+                                                    <span>JIRA</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- Api Testing -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/API.jpg" alt="Api Testing"
+                                                        class="p-1 px-2">
+                                                    <span>Api Testing</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- DB Programming -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/Database-programming-2.png.webp"
+                                                        alt="DB Programming" class="p-1 px-2">
+                                                    <span>DB Programming</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- Cypress.io -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/cypress.png" alt="Cypress.io"
+                                                        class="p-1 px-2">
+                                                    <span>Cypress.io</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- Testing -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/Automation-Testing.jpg" alt="Testing"
+                                                        class="p-1 px-2">
+                                                    <span> Testing</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- GitHub -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/GitHub-Logo.png" alt="GitHub"
+                                                        class="p-1 px-2">
+                                                    <span>GitHub</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- Confluence -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/Confluence.png" alt="Confluence"
+                                                        class="p-1 px-2">
+                                                    <span>Confluence</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- DevOps -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/devops.jpg" alt="DevOps" class="p-1 px-2">
+                                                    <span>DevOps</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- Jenkins -->
+                                            <div class="col text-truncate py-sm-2 py-md-2 py-lg-2 py-xxl-2   ">
+                                                <div class="skill-card  flex-wrap">
+                                                    <input type="checkbox">
+                                                    <img src="./assets/images/jenkins.jpg" alt="Jenkins"
+                                                        class="p-1 px-2">
+                                                    <span>Jenkins</span>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pagination -->
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-center justify-content-md-end me-md-3">
+                                <li class="page-item disabled d-none d-sm-inline">
+                                    <a class="page-link" href="#" aria-label="First">«</a>
+                                </li>
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" aria-label="Previous">‹</a>
+                                </li>
+                                <li class="page-item active">
+                                    <a class="page-link" href="#">1</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">2</a>
+                                </li>
+                                <li class="page-item d-none d-sm-inline">
+                                    <a class="page-link" href="#">3</a>
+                                </li>
+                                <li class="page-item d-none d-md-inline">
+                                    <a class="page-link" href="#">4</a>
+                                </li>
+                                <li class="page-item disabled d-none d-md-inline">
+                                    <a class="page-link" href="#">...</a>
+                                </li>
+                                <li class="page-item d-none d-md-inline">
+                                    <a class="page-link" href="#">90</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">›</a>
+                                </li>
+                                <li class="page-item d-none d-sm-inline">
+                                    <a class="page-link" href="#" aria-label="Last">»</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sidebar = document.getElementById("sidebar");
+            const sidebarToggle = document.getElementById("sidebarToggle");
+            const closeSidebar = document.getElementById("closeSidebar");
+
+            // Toggle Sidebar
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener("click", function () {
+                    sidebar.classList.toggle("active");
+                });
+            }
+
+
+            // Close Sidebar
+            if (closeSidebar) {
+                closeSidebar.addEventListener("click", function () {
+                    sidebar.classList.remove("active");
+                });
+            }
+
+            // Toggle Dropdown Menus
+            document.querySelectorAll(".toggle-submenu").forEach(item => {
+                item.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    let submenu = this.nextElementSibling;
+                    if (submenu) submenu.classList.toggle("open");
+                });
+            });
+        });
+
+    </script>
+</body>
+
+</html>.

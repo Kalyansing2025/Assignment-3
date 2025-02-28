@@ -1,0 +1,91 @@
+/* Delete icon */
+.fa-trash {
+    color: black; /* Default color */
+    transition: color 0.3s ease-in-out; /* Smooth transition */
+}
+
+.fa-trash:hover {
+    color: red; /* Red color on hover */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+/* pagination styling  */
+.pagination .page-item .page-link {
+    color: #333;
+    border-radius: 50%;
+    margin: 0 5px;
+    transition: 0.3s ease-in-out;
+}
+/* pagination Styling */
+.pagination .page-item.active .page-link {
+    background-color: blue;
+    color: white;
+    border: none;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #ccc;
+}
+
+.pagination .page-item .page-link:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+
+/*pagination Responsive  */
+@media (max-width: 768px) {
+    .pagination .page-item.d-none.d-md-inline {
+        display: none !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .pagination .page-item.d-none.d-sm-inline {
+        display: none !important;
+    }
+}
+@media (max-width: 768px) {
+    .circle-badge {
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+    }
+}
+
+
+body {
+    background-color: #f9f9f9;
+}
+.skill-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+.skill-card:hover {
+    transform: translateY(-3px);
+}
+.skill-card img {
+    max-width: 32px;
+    height: auto;
+}
+.skill-card span {
+    flex-grow: 1;
+    font-weight: 500;
+    text-align: left;
+}
+.btn-icon {
+    background: transparent;
+    border: none;
+    color: #6c757d;
+    font-size: 14px;
+}
+.btn-icon:hover {
+    color: #343a40;
+}
